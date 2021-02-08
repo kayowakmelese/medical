@@ -1,25 +1,67 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faSearch,faDice,faCircleNotch,faSpinner} from '@fortawesome/free-solid-svg-icons'
+import { Button,Paper, TextField,FormControl,InputLabel,InputAdornment } from '@material-ui/core'
+import Home from './components/Home'
+import Search from './components/Search'
+import Magazine from './components/Magazine'
+import Detail from './components/Detail'
+import ListCategory from './components/ListCategory'
+import ListSubCategory from './components/ListSubCategory'
+import ListProduct from './components/ListProduct'
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state=({searchicon:faSearch,searchkey:""})
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  changeicon(event){
+
+    let keys=document.getElementById('searchkey').value
+      this.setState({searchicon:faCircleNotch,searchkey:keys})
+    
+    
+
+
+  }
+  render() {
+    let link="/search/"+this.state.searchkey
+    return <BrowserRouter>
+      <div className="navbar whitebg   flex">
+        <div><img className="logo " src="../logo-8.svg" /></div>
+        <div className="padding  ">
+          <Link to="/home"><Button variant="contained "  className="active h-100  radius"><p>Homepage</p></Button></Link>
+          
+          <Link to="/magazine"><Button variant="contained" size="large" color="white" className="h-100  radius whitebg" disableElevation>Magazine</Button>  </Link>     
+          
+
+
+      </div>
+      <div className=" padding w-30"><Link to={link}>
+      <div className="border flex" style={{padding:'5px'}}>
+               <input className="padding b-none fullwidth" id="searchkey" type="text" placeholder="search items" onChange={(e)=>{this.changeicon(e)}}/><FontAwesomeIcon id="search" className="h-100 padding" icon={this.state.searchicon}/>
+               </div>
+               </Link>
+               </div>
+            
+        </div>
+        
+      <Switch>
+        <Route path="/home" component={Home} />
+        <Route path="/search/:key" >
+          <Search keys={this.state.searchkey}/>
+        </Route>
+        <Route path="/magazine" component={Magazine} />
+        <Route path="/detail/:id" component={Detail}/>
+        <Route path="/category/:id" component={ListCategory}/>
+        <Route path="/subcategory/:id" component={ListSubCategory}/>
+        <Route path="/product/:id" component={ListProduct}/>
+      </Switch>
+    </BrowserRouter>
+
+
+  }
 }
-
 export default App;

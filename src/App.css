@@ -1,38 +1,461 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+    padding: 10px;
+    margin: 0;
+    background-color: #efefef;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.flex {
+    display: flex;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.avatar {
+    height: 100px
 }
 
-.App-link {
-  color: #61dafb;
+.radius {
+    border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.lilradius {
+    border-radius: 5px;
+}
+
+.w-20 {
+    width: 20% !important;
+    margin-right: 1%;
+}
+
+.w-30 {
+    width: 35%
+}
+
+.lilpadding {
+    padding: 5px;
+}
+
+.morepadding {
+    padding: 15px !important;
+}
+
+.marginrit {
+    margin-right: 20px !important;
+}
+
+.w-50 {
+    width: 50% !important;
+}
+
+.bottom-0 {
+    margin-top: 10px !important
+}
+
+.MuiBreadcrumbs-li {
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.detail-image {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.w-90 {
+    width: 95% !important
+}
+
+.p-bottom {
+    position: absolute !important;
+    bottom: 2%
+}
+
+.MuiBreadcrumbs-separator {
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.center {
+    text-align: center;
+    text-align: -webkit-center
+}
+
+h1 {
+    margin: 0px;
+    font-family: unset;
+    color: #222;
+    text-transform: uppercase !important;
+}
+
+.h2 {
+    font-size: 14pt !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    font-weight: 400 !important;
+    color: rgb(82, 82, 255);
+}
+
+.h1 {
+    font-size: 34pt !important;
+    letter-spacing: -3pt;
+}
+
+.b-circle {
+    padding: 10px !important;
+    margin-top: 10px !important;
+    border-radius: 30px !important;
+}
+
+.liltext {
+    font-size: 14px;
+    color: #555;
+    text-shadow: none !important;
+}
+
+a {
+    color: gray !important;
+    transition: 0.25s
+}
+
+a:hover {
+    color: black !important
+}
+
+.big-icon {
+    width: 30px !important;
+    height: auto;
+    margin-right: 20px;
+}
+
+.fullwidth {
+    width: 100%
+}
+
+.img-div {
+    height: 200px;
+    width: 100%;
+    transition: 0.8s;
+    background-color: rgb(46, 46, 46) !important;
+}
+
+.card-div:hover .img-div {
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.img-div:hover {
+    filter: contrast(1.2);
+}
+
+.br {
+    margin-top: 1% !important
+}
+
+.r-5 {
+    border-radius: 30px !important;
+    transition: 0.5s;
+    height: 50px !important;
+    width: 50px !important;
+    background-color: skyblue !important
+}
+
+.thumbnail {
+    border-radius: 5pt !important;
+    background-color: rgb(131, 123, 112);
+    width: 60px;
+    height: 60px;
+    margin: 1%;
+    opacity: 0.8;
+    transition: 0.25s;
+    cursor: pointer
+}
+
+.thumbnail:hover {
+    opacity: 1;
+}
+
+.link-text {
+    font-family: monospace !important;
+    font-size: 14pt;
+    color: #3c3c3c;
+}
+
+.card-hover {
+    box-shadow: none !important;
+}
+
+.card-hover:hover .r-5 {
+    background-color: rgb(61, 43, 226) !important;
+}
+
+.card-hover:hover .btn {
+    opacity: 1 !important;
+    color: rgb(61, 43, 226);
+}
+
+.gray {
+    background-color: #fff !important;
+}
+
+.btn p {
+    color: rgb(61, 43, 226) !important
+}
+
+.btn {
+    transition: 0.25s;
+    opacity: 0 !important;
+}
+
+.h2 {
+    font-size: 18pt !important;
+    font-weight: 700;
+}
+
+.h-300 {
+    height: 200px !important
+}
+
+.padding-0 {
+    padding: 0px !important
+}
+
+.card-div {
+    transition: 0.25s;
+    cursor: pointer;
+    margin-right: 2%;
+    color: gray;
+}
+
+.card-div:hover {
+    box-shadow: 0px 0px 10px #ccc;
+    color: black
+}
+
+.head-txt {
+    font-size: 24pt !important;
+}
+
+.whitebg {
+    background-color: white !important;
+}
+
+.m-top {
+    margin-top: 10px !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.headertext {
+    font-weight: 750;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+p {
+    margin: 0px;
+    text-transform: capitalize;
+}
+
+.height {
+    height: 300px;
+}
+
+.outliner {
+    transition: 0.25s;
+    margin: 1% 0%;
+    border: 2px solid white;
+    color: #777;
+}
+
+.w-f {
+    width: -webkit-fill-available
+}
+
+.active {
+    background: linear-gradient(45deg, #0d8ce0, #6072f5) !important;
+    color: white !important;
+}
+
+input[type='text'] {
+    outline: none;
+    font-size: 12pt;
+    font-weight: bold;
+    color: #465af1;
+}
+
+.border {
+    border: 2.5px rgb(207, 207, 207) solid;
+    border-radius: 10px;
+    transition: 0.25s
+}
+
+.border:hover {
+    box-shadow: 0px 0px 10px #0d8ce01c;
+    border: 2.5px #1a5edb solid;
+}
+
+.b-none {
+    border: none
+}
+
+.active p {
+    text-transform: uppercase !important;
+    font-weight: 700;
+}
+
+a:active {
+    background: linear-gradient(45deg, #0d8ce0, #6072f5) !important;
+    color: white !important;
+}
+
+.outliner p {}
+
+.h-70 {
+    height: 70px !important;
+    width: 70px !important
+}
+
+.outliner:hover {
+    background: rgb(245, 249, 253);
+    cursor: pointer;
+}
+
+.riticon {
+    margin-right: 5%;
+}
+
+.almostwhitebg {
+    background-color: rgb(248, 248, 248) !important;
+}
+
+.heightfull {
+    height: auto;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.bg-eee {
+    background: #eee !important
+}
+
+.blackbg {
+    background-color: #222;
+    color: #fff;
+}
+
+.w-80 {
+    width: 80%
+}
+
+.w-100 {
+    width: 100%
+}
+
+.logo {
+    height: 80px;
+}
+
+.h-100 {
+    height: 100% !important
+}
+
+.MuiBadge-anchorOriginTopRightRectangle {
+    color: white;
+    background-color: red;
+}
+
+.padding {
+    padding: 15px;
+}
+
+.space {
+    width: 10px;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.MuiPaper-elevation1 {
+    box-shadow: none !important;
+}
+
+ul {
+    list-style-type: none;
+    width: 40%;
+    padding: 0px;
+}
+
+.left {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+li {
+    display: block !important;
+    margin-bottom: 2%;
+}
+
+.li {
+    display: inline !important;
+    float: left !important
+}
+
+.MuiAccordionDetails-root {
+    border-left: 2px #aaa solid;
+    transition: 0.25s;
+    padding: 2px;
+    user-select: none;
+    padding-left: 10px;
+    cursor: pointer
+}
+
+.MuiAccordionDetails-root:hover {
+    background: #efefef;
+    border-left: 10px #0d8ce0 solid;
+}
+
+.w-fit {
+    width: fit-content !important
+}
+
+.w-fitt {
+    width: -webkit-fill-available !important
+}
+
+.t-left {
+    text-align: left;
+}
+
+.MuiAccordion-rounded:last-child {
+    border-radius: 5px !important;
+}
+
+.top-part {
+    margin-top: 8%;
+}
+
+.neutralize {
+    border: none;
+    outline: none;
+    transition: 0.25s;
 }
