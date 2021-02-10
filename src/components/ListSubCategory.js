@@ -5,7 +5,7 @@ import TextCard from './snippet/textCard'
 import BreadCrumbs from './snippet/BreadCrumbs'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowDown} from '@fortawesome/free-solid-svg-icons'
-import Headers from './snippet/Headers'
+import CHeader from './snippet/CHeaders'
 
 class ListSubCategory extends React.Component{
     constructor(props){
@@ -20,7 +20,7 @@ class ListSubCategory extends React.Component{
     render(){
         if(this.state.loaded){
             return <Container className="top-part w-80">
-            <Headers header={this.state.data.name} description={this.state.data.description}/>
+            <CHeader header={this.state.data.name} description={this.state.data.description}/>
             <Container className="w-80 ">
             <p className="head-txt"></p>
                 <BreadCrumbs links={[{name:this.state.data.Category.name,link:"/category/"+this.state.data.Category.id},{name:this.state.data.name,link:"#"}]}/>

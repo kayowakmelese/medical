@@ -3,13 +3,14 @@ import loadData from '../controller/loadData'
 import {Breadcrumbs, Container,Button} from '@material-ui/core'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faDollarSign,faTag} from '@fortawesome/free-solid-svg-icons'
-import {Link} from 'react-router-dom'
+import ReactImageZoom from 'react-image-zoom'
 import BreadCrumbs from './snippet/BreadCrumbs'
+import CardView from './snippet/cardView'
 class Detail extends React.Component{
     constructor(props){
         super(props)
         this.state=({
-            data:[],loaded:false,imageurl:""
+            data:[],loaded:false,imageurl:"",product:null
         })
     }
 
@@ -22,8 +23,14 @@ class Detail extends React.Component{
         const resp=await loadData({id:this.props.match.params.id},"loadDetail")
         const imageurl="http://localhost:355/pictures/"+resp.data.id+"photo1.jpg"
         console.log(resp.data)
-        this.setState({loaded:true,data:resp.data,imageurl:imageurl})
+        this.loadProducts(resp.data.Product.id)
+        this.setState({data:resp.data,imageurl:imageurl})
 
+    }
+    async loadProducts(id){
+        const resp=await loadData({id:id},"listProduct")
+        this.setState({loaded:true,product:resp.data})
+        console.log(resp)
     }
 
     render(){
@@ -57,13 +64,14 @@ class Detail extends React.Component{
             
             <Container className="   radius w-80 padding-0 ">
             <div className="flex">
-            <div className="whitebg w-50 marginrit radius ">
-                <div className="radius detail-image" style={{background:`#ddd url("${this.state.imageurl}") no-repeat center /contain`,height:'400px',}}></div>
+            <div className="whitebg w-50  marginrit radius padding trans ">
+                <ReactImageZoom  className="detail-image radius" height="400" zoomWidth="400" zoomStyle={'margin-left:5%;'} img={this.state.imageurl}/>
+                {/* <div className="radius detail-image" style={{background:`#ddd url("${this.state.imageurl}") no-repeat center /contain`,height:'400px',}}></div> */}
                 <div className="flex">
             {items}
             </div>
            
-                </div>  <div className="whitebg padding w-50 radius" style={{position:'relative'}}>
+                </div>  <div className="whitebg padding w-50 radius flex-1" style={{position:'relative'}}>
                     <h1>{this.state.data.name}</h1>
                     <p className="liltext">{this.state.data.description}</p>
                     <br></br>
@@ -87,7 +95,20 @@ class Detail extends React.Component{
                 </div>
                 </Container>
                  <Container>
-                
+                <h1>Items under the same product</h1>
+                <Container className="">
+                        {this.state.product.Items.map((dat,index)=>{
+                            if(dat.id!==this.state.data.id){
+                                const url="/detail/"+dat.id
+                            const imageurl="http://localhost:355/pictures/"+dat.id+"photo1.jpg"
+       
+                            return <CardView url={url} name={dat.name} desc={dat.description} image={imageurl} price={dat.ItemPrice.price}/>
+                      
+                            }else{
+                                return null
+                            }
+                             })}
+                    </Container>
                
                 </Container>
             </Container>

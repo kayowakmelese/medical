@@ -3,7 +3,7 @@ import {Container} from '@material-ui/core'
 import loadData from '../controller/loadData'
 import TextCard from './snippet/textCard'
 
-import Headers from './snippet/Headers'
+import CHeader from './snippet/CHeaders'
 
 class ListCategory extends React.Component{
 
@@ -22,10 +22,12 @@ class ListCategory extends React.Component{
     render(){
         if(this.state.loaded){
             return <Container className="top-part w-80">
-            <Headers header={this.state.data.name} description={this.state.data.description}/>
+            <CHeader header={this.state.data.name} description={this.state.data.description}/>
            
             <Container className="radius   padding">
+            
             <ul className="left w-100">
+            <p>Subcategories under <b>{this.state.data.name}</b></p>
                 {
                     this.state.data.SubCategories.map((dat,index)=>{
                         const link="/subcategory/"+dat.id

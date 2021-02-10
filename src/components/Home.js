@@ -24,11 +24,14 @@ class Home extends React.Component {
     }
 
     render() {
-        return <div>
+        return <div className="whitebg">
 
            
-            <Headers header="Company name" description="choose categories and subcategories or search using keys,tags and names"/>
-
+            <Headers header="Something Medical" description="choose categories and subcategories or search using keys,tags and names and something for website marketing stuf!"/>
+            <br></br>
+            <h1 className="center">
+                SELECT FROM OUR CATEGORIES
+            </h1>
             <Container>
                 <div className="flex t-left left">
                     <ul> {this.state.category.map((data, index) => {
@@ -64,7 +67,7 @@ class Home extends React.Component {
             <Container><h1>New Items</h1>
             <p className="liltext">new medical items added recently</p>
              </Container>
-            <Container><ul className="w-100">
+            <Container><ul className="w-90">
                         {
                             this.state.featured.map((data,index)=>{
                                 let url="/detail/"+data.Item.id
@@ -93,7 +96,7 @@ function showicon(len) {
 function ShowAccordion(props) {
 
     return <li className="w-100">
-        <Accordion className="whitebg w-100 marginrit"  >
+        <Accordion className="whitebg w-100 marginrit border-o"  >
             <AccordionSummary>
                 <Typography className="w-fitt">{props.name}</Typography> {showicon(props.subcategories.length)}
             </AccordionSummary>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container,Tabs,Tab,Badge,Button,Avatar} from '@material-ui/core'
 import loadData from '../controller/loadData'
-
+import {Link} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
@@ -79,7 +79,8 @@ class Search extends React.Component{
 function Searchresult(props){
     let items=[]
     props.SubCategory.map((data,i)=>{
-        items.push(
+        const url="/"+props.link+"/"+data.id
+        items.push(<Link to={url}>
             <div className="padding radius flex outliner card-hover h-100">
                 <Avatar className="h-70 marginrit">{data.name.charAt(0)}</Avatar>
                 <div><h1>{data.name}</h1>
@@ -87,7 +88,7 @@ function Searchresult(props){
                 </div>
                 <FontAwesomeIcon className="btn w-fit" style={{marginTop:'20px'}} icon={faArrowRight}/>
 
-            </div>
+            </div></Link>
         )
         return null
     })
@@ -101,7 +102,8 @@ function Searcher(props){
        
                 props.data.Items.map((data,i)=>{
                     const imageurl="http://localhost:355/pictures/"+data.id+"photo1.jpg"
-                    items.push(<div className="padding radius flex outliner card-hover">
+                    const url="/detail/"+data.id
+                    items.push(<Link to={url}><div className="padding radius flex outliner card-hover">
                     <img src={imageurl} className="radius marginrit" width="70px" height="70px"/>
                     <div>
                         <h1>{data.name}</h1>
@@ -109,17 +111,17 @@ function Searcher(props){
                     </div>
                     <FontAwesomeIcon className="btn" style={{marginTop:'20px'}} icon={faArrowRight}/>
         
-                </div>)
+                </div></Link>)
                 return null
                 })
                 return items
                 
             }else if(props.value==='category'){
-                return <Searchresult SubCategory={props.data.Categories}/>
+                return <Searchresult link={"category"} SubCategory={props.data.Categories}/>
             }else if(props.value==='product'){
-                return <Searchresult SubCategory={props.data.Products}/>
+                return <Searchresult link={"product"} SubCategory={props.data.Products}/>
             }else if(props.value==='subcategory'){
-            return <Searchresult SubCategory={props.data.SubCategory}/>
+            return <Searchresult link={"subcategory"} SubCategory={props.data.SubCategory}/>
             }
 }
 

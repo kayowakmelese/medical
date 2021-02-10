@@ -20,7 +20,7 @@ class App extends React.Component {
   changeicon(event){
 
     let keys=document.getElementById('searchkey').value
-      this.setState({searchicon:faCircleNotch,searchkey:keys})
+      this.setState({searchicon:faSearch,searchkey:keys})
     
     
 
@@ -31,19 +31,17 @@ class App extends React.Component {
     return <BrowserRouter>
       <div className="navbar whitebg   flex">
         <div><img className="logo " src="../logo-8.svg" /></div>
-        <div className="padding  ">
-          <Link to="/home"><Button variant="contained "  className="active h-100  radius"><p>Homepage</p></Button></Link>
+          <div className="padding"><Link to="/home"><li   className="padding b  radius li"><p>Homepage</p></li></Link></div>
           
-          <Link to="/magazine"><Button variant="contained" size="large" color="white" className="h-100  radius whitebg" disableElevation>Magazine</Button>  </Link>     
+          <div className="padding"><Link to="/magazine"><li className="padding  radius li" >Magazine</li>  </Link> </div>    
           
 
 
-      </div>
-      <div className=" padding w-30"><Link to={link}>
+      <div className=" padding w-30">
       <div className="border flex" style={{padding:'5px'}}>
-               <input className="padding b-none fullwidth" id="searchkey" type="text" placeholder="search items" onChange={(e)=>{this.changeicon(e)}}/><FontAwesomeIcon id="search" className="h-100 padding" icon={this.state.searchicon}/>
+               <input className="padding b-none fullwidth" id="searchkey" type="text" placeholder="search items" onChange={(e)=>{this.changeicon(e)}}/><Link to={link}><FontAwesomeIcon id="search" className="h-100 marginrit" icon={this.state.searchicon}/></Link>
                </div>
-               </Link>
+               
                </div>
             
         </div>

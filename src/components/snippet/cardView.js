@@ -7,7 +7,7 @@ import {faArrowRight,faDollarSign } from '@fortawesome/free-solid-svg-icons'
 
 class CardView extends React.Component{
     render(){
-        return <Link to={this.props.url}><li className="li whitebg card-div  radius w-30">
+        return <Link to={this.props.url}><li className="li whitebg card-div  radius w-30 marginrit">
         <div className="img-div radius " style={{background:`url(${this.props.image})`,backgroundSize:'cover'}}></div>
         
         <div className="padding">

@@ -3,7 +3,8 @@ import loadData from '../controller/loadData'
 import CardView from './snippet/cardView'
 import {Container} from '@material-ui/core'
 import BreadCrumbs from './snippet/BreadCrumbs'
-import Headers from './snippet/Headers'
+
+import CHeader from './snippet/CHeaders'
 
 
 class ListProduct extends React.Component{
@@ -19,8 +20,8 @@ class ListProduct extends React.Component{
 
     render(){
         if(this.state.loaded){
-            return <Container class="">
-                    <Headers header={this.state.data.name} description="list of items under this product"/>
+            return <Container class="top-part">
+                    <CHeader header={this.state.data.name} description="list of items under this product"/>
                     
                     <Container className="w-80 br">
                     <BreadCrumbs links={[{
@@ -34,7 +35,9 @@ class ListProduct extends React.Component{
                     </Container>
                    
 
+                    
                     <Container className="">
+                    <h1>Items under <b>{this.state.data.name}</b></h1>
                         {this.state.data.Items.map((dat,index)=>{
                             const url="/detail/"+dat.id
                             const imageurl="http://localhost:355/pictures/"+dat.id+"photo1.jpg"

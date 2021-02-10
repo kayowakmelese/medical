@@ -2,17 +2,19 @@ import React from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'react-router-dom'
-import {Button,Avatar} from '@material-ui/core'
+import {Button,Avatar,Container} from '@material-ui/core'
 
 class TextCard extends React.Component{
 
     render(){ 
         let namess=this.props.name
-        return <Link to={this.props.link} ><div className="h-300 br li card-div card-hover w-20 whitebg padding radius">
-            <Avatar className="r-5">{namess.charAt(0)}</Avatar>
-            <p className="h2">{this.props.name}</p>
+        return <Link to={this.props.link} >
+        <div className="flex card-div card-hover w-100 whitebg padding radius br">
+            <Avatar className="r-5 marginrit">{namess.charAt(0)}</Avatar>
+            <div><p className="h3 marginrit">{this.props.name}</p>
             <p className="liltext">{descriptiontext(this.props.description)}</p>
-            <Button className="btn  b-circle gray br"><p className="marginrit">See Detail</p><FontAwesomeIcon className="" icon={faArrowRight}/></Button>
+            </div>
+            <Button className="btn  b-circle gray br w-50"><p className="marginrit">See Detail</p><FontAwesomeIcon className="" icon={faArrowRight}/></Button>
         </div></Link>
     }
 }
