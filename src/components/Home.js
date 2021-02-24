@@ -32,42 +32,24 @@ class Home extends React.Component {
             <h1 className="center">
                 SELECT FROM OUR CATEGORIES
             </h1>
-            <Container>
-                <div className="flex t-left left">
-                    <ul> {this.state.category.map((data, index) => {
-                        if (index <= this.state.category.length / 3) {
+            <Container className="w-100">
+                <div className="left">
+                    <ul className='w-100'> {this.state.category.map((data, index) => {
+                        if (index <= this.state.category.length ) {
                             return <ShowAccordion index={index} length={this.state.category.length} name={data.name} subcategories={data.SubCategories} />
                         }else{
                             return null
                         }
                     })}
                     </ul>
-                    <ul className="left">
-                        {this.state.category.map((data, index) => {
-                            if (index > this.state.category.length / 3 && index<=(this.state.category.length/3)*2) {
-                               return <ShowAccordion index={index} length={this.state.category.length} name={data.name} subcategories={data.SubCategories} />
-                            }else{
-                                return null
-                            }
-                        })}
-                    </ul>
-                    <ul>
-                        {this.state.category.map((data, index) => {
-                            if (index > (this.state.category.length / 3)*2 ) {
-                                
-                                return <ShowAccordion index={index} length={this.state.category.length} name={data.name} subcategories={data.SubCategories} />
-                            }else{
-                                return null
-                            }
-                        })}
-                    </ul>
-                </div>
+                   </div>
             </Container>
+            <br></br>
 
-            <Container><h1>New Items</h1>
+            <Container className="w-100" style={{display:'flow-root'}}><h1>New Items</h1>
             <p className="liltext">new medical items added recently</p>
              </Container>
-            <Container><ul className="w-90">
+            <Container><ul className="w-100">
                         {
                             this.state.featured.map((data,index)=>{
                                 let url="/detail/"+data.Item.id
@@ -95,7 +77,7 @@ function showicon(len) {
 
 function ShowAccordion(props) {
 
-    return <li className="w-100">
+    return <li className="w-30 li marginrit">
         <Accordion className="whitebg w-100 marginrit border-o"  >
             <AccordionSummary>
                 <Typography className="w-fitt">{props.name}</Typography> {showicon(props.subcategories.length)}

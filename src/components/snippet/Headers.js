@@ -11,7 +11,7 @@ class Headers extends React.Component{
         <div className="t-rit top-part">
         <h1 className="headers cursive " style={{paddingBottom:'0px !important'}}>{this.props.header}</h1>
         <p className="h2 head-desc">{this.props.description}</p>
-        <div className="flex br icons padding" >
+        <div className="f-flex br icons padding" >
             <div className="center margin-rit icon-hover"><FontAwesomeIcon icon={faSearch}  className=" big-icon"/><p className="">search intensively</p></div>
             <div className="center margin-rit icon-hover"><FontAwesomeIcon icon={faGlobe}  className=" big-icon"/><p className="">order Any equipments</p></div>
             <div className="center margin-rit icon-hover"><FontAwesomeIcon icon={faClock}  className=" big-icon"/><p className="">Fast Delivery</p></div>

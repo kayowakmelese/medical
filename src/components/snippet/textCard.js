@@ -9,7 +9,7 @@ class TextCard extends React.Component{
     render(){ 
         let namess=this.props.name
         return <Link to={this.props.link} >
-        <div className="flex card-div card-hover w-100 whitebg padding radius br">
+        <div className="f-flex card-div card-hover w-100 whitebg padding radius br">
             <Avatar className="r-5 marginrit">{namess.charAt(0)}</Avatar>
             <div><p className="h3 marginrit">{this.props.name}</p>
             <p className="liltext">{descriptiontext(this.props.description)}</p>

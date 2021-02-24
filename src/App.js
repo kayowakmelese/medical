@@ -1,8 +1,8 @@
 import React from 'react'
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSearch,faDice,faCircleNotch,faSpinner} from '@fortawesome/free-solid-svg-icons'
-import { Button,Paper, TextField,FormControl,InputLabel,InputAdornment } from '@material-ui/core'
+import {faSearch,faDice,faCircleNotch,faSpinner,faHome,faPager} from '@fortawesome/free-solid-svg-icons'
+import { Button,Paper, TextField,FormControl,InputLabel,InputAdornment,BottomNavigation,BottomNavigationAction } from '@material-ui/core'
 import Home from './components/Home'
 import Search from './components/Search'
 import Magazine from './components/Magazine'
@@ -14,7 +14,7 @@ import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 class App extends React.Component {
   constructor(props){
     super(props)
-    this.state=({searchicon:faSearch,searchkey:""})
+    this.state=({searchicon:faSearch,searchkey:"",bar:"home"})
   }
 
   changeicon(event){
@@ -26,9 +26,19 @@ class App extends React.Component {
 
 
   }
+  setBar(value){
+    this.setState({bar:value})
+  }
   render() {
     let link="/search/"+this.state.searchkey
     return <BrowserRouter>
+    <div className="w-100 navbar-mobile">
+      <BottomNavigation value={this.state.bar} onChange={(event,newval)=>{this.setBar(newval)}}>
+        <BottomNavigationAction value="home" label="homepage" icon={<Link to="/home"><FontAwesomeIcon icon={faHome}/></Link>}/>
+        <BottomNavigationAction value="magazine" label="Magazine" icon={<Link to="/magazine"> <FontAwesomeIcon icon={faPager}/></Link>}/>
+        <BottomNavigationAction value="search" label="Search" icon={<Link to="/search"><FontAwesomeIcon icon={faSearch}/></Link>}/>
+      </BottomNavigation>
+    </div>
       <div className="navbar whitebg   flex">
         <div><img className="logo " src="../logo-8.svg" /></div>
           <div className="padding"><Link to="/home"><li   className="padding b  radius li"><p>Homepage</p></li></Link></div>

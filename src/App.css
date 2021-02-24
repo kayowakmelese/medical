@@ -204,14 +204,11 @@ a:hover {
 .img-div {
     height: 200px;
     width: 100%;
-    transition: 0.8s;
-    background-color: rgb(46, 46, 46) !important;
+    transition: 0.5s;
 }
 
 .card-div:hover .img-div {
-    background-size: contain !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
+    transform: scale(1.2);
 }
 
 .img-div:hover {
@@ -292,6 +289,7 @@ a:hover {
 .card-div {
     transition: 0.25s;
     cursor: pointer;
+    overflow: hidden;
     margin-right: 2%;
     color: gray;
 }
@@ -474,7 +472,7 @@ a:active {
 ul {
     list-style-type: none;
     width: 40%;
-    padding: 0px;
+    padding: inherit;
 }
 
 .left {
@@ -530,4 +528,57 @@ li {
     border: none;
     outline: none;
     transition: 0.25s;
+}
+
+.f-flex {
+    display: flex
+}
+
+.navbar-mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .flex {
+        display: block;
+    }
+    .MuiContainer-root {
+        padding: unset !important;
+        margin: unset
+    }
+    .marginrit {
+        margin: 0 !important
+    }
+    img {
+        width: 100% !important;
+        height: unset !important
+    }
+    .navbar {
+        display: none;
+    }
+    .navbar-mobile {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        z-index: 2
+    }
+    .w-30 {
+        width: -webkit-fill-available !important
+    }
+    .hero {
+        width: 100%;
+        height: unset
+    }
+    .w-50 {
+        width: -webkit-fill-available !important
+    }
+    .padding {
+        padding: 5px
+    }
+    .w-30 {
+        width: 90%
+    }
+    ul {
+        padding: inherit !important
+    }
 }

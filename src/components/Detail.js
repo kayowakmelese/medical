@@ -20,17 +20,28 @@ class Detail extends React.Component{
     
 
     async componentDidMount(){
-        const resp=await loadData({id:this.props.match.params.id},"loadDetail")
+        const resp=await this.loadDetail()
+        
         const imageurl="http://localhost:355/pictures/"+resp.data.id+"photo1.jpg"
-        console.log(resp.data)
-        this.loadProducts(resp.data.Product.id)
         this.setState({data:resp.data,imageurl:imageurl})
+
+    }
+    async componentDidUpdate(prevprops,prevstate,snapshot){
+        if(prevprops!==this.props){
+            const resp=await this.loadDetail()
+            const imageurl="http://localhost:355/pictures/"+resp.data.id+"photo1.jpg"
+            this.setState({data:resp.data,imageurl:imageurl})
+        }
+    }
+    async loadDetail(){
+        const resp=await loadData({id:this.props.match.params.id},"loadDetail")
+        this.loadProducts(resp.data.Product.id)
+        return resp
 
     }
     async loadProducts(id){
         const resp=await loadData({id:id},"listProduct")
         this.setState({loaded:true,product:resp.data})
-        console.log(resp)
     }
 
     render(){
@@ -67,7 +78,7 @@ class Detail extends React.Component{
             <div className="whitebg w-50  marginrit radius padding trans ">
                 <ReactImageZoom  className="detail-image radius" height="400" zoomWidth="400" zoomStyle={'margin-left:5%;'} img={this.state.imageurl}/>
                 {/* <div className="radius detail-image" style={{background:`#ddd url("${this.state.imageurl}") no-repeat center /contain`,height:'400px',}}></div> */}
-                <div className="flex">
+                <div className="f-flex">
             {items}
             </div>
            
@@ -75,7 +86,7 @@ class Detail extends React.Component{
                     <h1>{this.state.data.name}</h1>
                     <p className="liltext">{this.state.data.description}</p>
                     <br></br>
-                    <div className="flex">
+                    <div className="f-flex">
                     {
                         this.state.data.ItemTags.map((dat,i)=>{
                             return  <div className="flex marginrit"><FontAwesomeIcon className="" color="gray" icon={faTag}/><p className="liltext"><b>{dat.Tag.name}</b></p></div>
