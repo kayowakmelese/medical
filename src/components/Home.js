@@ -27,10 +27,10 @@ class Home extends React.Component {
         return <div className="whitebg">
 
            
-            <Headers header="Something Medical" description="choose categories and subcategories or search using keys,tags and names and something for website marketing stuf!"/>
+            <Headers header="Medical Equipment Import And Export" description="choose categories and subcategories or search using keys,tags and names and something for website marketing stuf!"/>
             <br></br>
-            <h1 className="center">
-                SELECT FROM OUR CATEGORIES
+            <h1 className="w-80 m-r">
+                select from The categories below
             </h1>
             <Container className="w-100">
                 <div className="left">
