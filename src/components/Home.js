@@ -45,8 +45,8 @@ class Home extends React.Component {
                    </div>
             </Container>
             <br></br>
-
-            <Container className="w-100" style={{display:'flow-root'}}><h1>New Items</h1>
+                    <br></br>
+            <Container className=" m-r top" style={{display:'flow-root'}}><h1 >New Items</h1>
             <p className="liltext">new medical items added recently</p>
              </Container>
             <Container><ul className="w-100">
@@ -78,7 +78,7 @@ function showicon(len) {
 function ShowAccordion(props) {
 
     return <li className="w-30 li marginrit">
-        <Accordion className="whitebg w-100 marginrit border-o"  >
+        <Accordion className="whitebg w-100 marginrit dropdown"  >
             <AccordionSummary>
                 <Typography className="w-fitt">{props.name}</Typography> {showicon(props.subcategories.length)}
             </AccordionSummary>

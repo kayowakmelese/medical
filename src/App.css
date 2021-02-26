@@ -133,12 +133,16 @@ button {
 }
 
 .m-r {
-    margin-left: 7%;
+    margin-left: 7% !important;
     text-transform: capitalize !important;
 }
 
 button:hover {
     background-color: rgb(0, 153, 255) !important
+}
+
+.top {
+    margin-top: 2% !important
 }
 
 .primary-button {
@@ -243,7 +247,8 @@ h1 {
     margin: 0px;
     font-family: unset;
     color: #222;
-    text-transform: uppercase !important;
+    font-size: 18pt;
+    text-transform: capitalize !important;
 }
 
 .h2 {
@@ -295,9 +300,7 @@ a:hover {
     transition: 0.5s;
 }
 
-.card-div:hover .img-div {
-    transform: scale(1.2);
-}
+.card-div:hover .img-div {}
 
 .img-div:hover {
     filter: contrast(1.2);
@@ -328,6 +331,16 @@ a:hover {
 
 .thumbnail:hover {
     opacity: 1;
+}
+
+.bottom {
+    position: absolute !important;
+    bottom: 2%;
+}
+
+.MuiAccordionSummary-root {
+    background: #eee !important;
+    border-radius: 5px !important;
 }
 
 .link-text {
@@ -380,15 +393,18 @@ a:hover {
     overflow: hidden;
     margin-right: 2%;
     color: gray;
+    position: relative !important;
+    height: 420px;
 }
 
 .card-div:hover {
-    box-shadow: 0px 0px 10px #ccc;
-    color: black
+    box-shadow: 0px 0px 20px rgb(233, 232, 232);
+    color: black;
+    background-color: rgba(255, 209, 4, 0.062) !important;
 }
 
 .head-txt {
-    font-size: 24pt !important;
+    font-size: 18pt !important;
 }
 
 .whitebg {
@@ -448,8 +464,18 @@ input[type='text'] {
     color: #465af1;
 }
 
+.bottom-up {
+    position: absolute !important;
+    bottom: 5%;
+}
+
+.card p {
+    font-size: 10pt;
+}
+
 .hero {
-    height: 400px
+    height: 400px;
+    width: 50%
 }
 
 .border {
