@@ -6,13 +6,13 @@ import {faArrowDown,faSearch,faClock,faGlobe,faCog,faBookMedical} from '@fortawe
 class Headers extends React.Component{
 
     render(){
-        return  <Container className="padding whitebg radius w-80 center top-part  ">
+        return  <Container className="padding whitebg radius w-80 center  ">
         <div className="flex ">
         <div className="t-rit top-part">
         <h1 className="headers header-f  " style={{paddingBottom:'0px !important'}}>{this.props.header}</h1>
         <p className="h2 anim">{this.props.description}</p>
         <div className="" >
-          <button className="primary-button">Search Now</button>
+          <button className="button primary-button">Search Now</button>
         </div>
         </div>
         <img src="../something.jpg" className="hero " style={{float:'right'}}/>

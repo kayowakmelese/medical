@@ -4,12 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown, faSearch, faCircleNotch, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import loadData from '../controller/loadData'
 import CardView from '../components/snippet/cardView'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Headers from './snippet/Headers'
+import Slides from './slides'
+
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 class Home extends React.Component {
     constructor(props) {
         super(props)
-        this.state = ({ searchicon: faSearch, category: [],featured:[] })
+        this.state = ({ searchicon: faSearch, category: [], featured: [], cat1: [], cat2: [], slidedata: [] })
     }
 
     changeicon() {
@@ -17,49 +21,86 @@ class Home extends React.Component {
     }
 
     async componentDidMount() {
-        const resp = await loadData({}, "listCategory");
-        const resp2=await loadData({},"recentItems")
-        this.setState({ category: resp.data,featured:resp2.data })
-        console.log(resp2.data)
+        let resp = await loadData({}, "listCategory");
+        const resp2 = await loadData({}, "recentItems");
+
+
+        this.setState({ category: resp.data, featured: resp2.data })
+        this.state.category.map((data, index) => {
+            if (index < this.state.category.length / 2) {
+                let catt = this.state.cat1;
+                catt.push(data)
+                this.setState({ cat1: catt })
+
+            }
+            return null;
+
+        }
+
+        )
+        resp = await loadData({}, "fetchSlides", false);
+        if (resp.status === 200) {
+            console.log("kkkk", JSON.stringify(resp.data))
+            this.setState({ slidedata: resp.data })
+        }
+
+        this.state.category.map((data, index) => {
+            console.log("the divider" + this.state.category.length / 2)
+            if (index >= this.state.category.length / 2) {
+                console.log("am here");
+                let catt = this.state.cat2;
+                catt.push(data);
+                this.setState({ cat2: catt })
+            }
+            return null;
+        })
     }
 
     render() {
-        return <div className="whitebg">
+        let arr = [];
+        return <div className="whitebg top-part  ">
+        <Headers header="Medical Equipment Import And Export" description="choose categories and subcategories or search using keys,tags and names and something for website marketing stuf!" />
+            
+            <CarouselProvider naturalSlideWidth={100} isPlaying={true}  isIntrinsicHeight={true} totalSlides={this.state.slidedata.length}>
+                <Slider>
+                    {this.state.slidedata.map((data, index) => {
+                        let imageurl="http://localhost:355/pictures/"+data.ItemId+"photo1.jpg"
+                        return <Slide index={index}><Slides name={data.Item.name} desc={data.Item.description} imageurl={imageurl} /></Slide>
+                    })}
+                </Slider>
 
-           
-            <Headers header="Medical Equipment Import And Export" description="choose categories and subcategories or search using keys,tags and names and something for website marketing stuf!"/>
+            </CarouselProvider>
+
             <br></br>
             <h1 className="w-80 m-r">
                 select from The categories below
             </h1>
             <Container className="w-100">
                 <div className="left">
-                    <ul className='w-100'> {this.state.category.map((data, index) => {
-                        if (index <= this.state.category.length ) {
-                            return <ShowAccordion index={index} length={this.state.category.length} name={data.name} subcategories={data.SubCategories} />
-                        }else{
-                            return null
-                        }
-                    })}
+                    <ul className='w-100 flex justify'>
+
+                        <AlignAccordions categories={this.state.cat1} />
+                        <AlignAccordions categories={this.state.cat2} />
+
                     </ul>
-                   </div>
+                </div>
             </Container>
             <br></br>
-                    <br></br>
-            <Container className=" m-r top" style={{display:'flow-root'}}><h1 >New Items</h1>
-            <p className="liltext">new medical items added recently</p>
-             </Container>
+            <br></br>
+            <Container className=" m-r top" style={{ display: 'flow-root' }}><h1 >New Items</h1>
+                <p className="liltext">new medical items added recently</p>
+            </Container>
             <Container><ul className="w-100">
-                        {
-                            this.state.featured.map((data,index)=>{
-                                let url="/detail/"+data.Item.id
-                                const imageurl="http://localhost:355/pictures/"+data.ItemId+"photo1.jpg"
-       
-                                return <CardView url={url} name={data.Item.name} desc={data.Item.description} price={data.Item.ItemPrice.price} image={imageurl}/>
-                            })
-                           
-                        }
-                        </ul>
+                {
+                    this.state.featured.map((data, index) => {
+                        let url = "/detail/" + data.Item.id
+                        const imageurl = "http://localhost:355/pictures/" + data.ItemId + "photo1.jpg"
+
+                        return <CardView url={url} name={data.Item.name} desc={data.Item.description} price={data.Item.ItemPrice.price} image={imageurl} />
+                    })
+
+                }
+            </ul>
             </Container>
         </div>
 
@@ -77,18 +118,27 @@ function showicon(len) {
 
 function ShowAccordion(props) {
 
-    return <li className="w-30 li marginrit">
+    return <li className="w-100 marginrit">
         <Accordion className="whitebg w-100 marginrit dropdown"  >
             <AccordionSummary>
                 <Typography className="w-fitt">{props.name}</Typography> {showicon(props.subcategories.length)}
             </AccordionSummary>
             {props.subcategories.map((dat, index) => {
-                const link="/subcategory/"+dat.id
+                const link = "/subcategory/" + dat.id
                 return <Link to={link}><AccordionDetails><p>{dat.name}</p></AccordionDetails></Link>
             })}
         </Accordion>
-        
+
     </li>
+}
+
+function AlignAccordions(props) {
+    return <div className="w-48">
+        {props.categories.map((data, index) => {
+            return <ShowAccordion index={index} length={props.categories.length} name={data.name} subcategories={data.SubCategories} />
+
+        })}
+    </div>
 }
 
 

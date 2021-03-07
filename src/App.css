@@ -80,7 +80,7 @@ html {
     }
 }
 
-button {
+.button {
     padding: 15px;
     background-color: white;
     border: none;
@@ -137,8 +137,12 @@ button {
     text-transform: capitalize !important;
 }
 
-button:hover {
+.button:hover {
     background-color: rgb(0, 153, 255) !important
+}
+
+.h-a {
+    height: auto !important
 }
 
 .top {
@@ -387,6 +391,32 @@ a:hover {
     padding: 0px !important
 }
 
+.slide-div {
+    height: 400px;
+    width: fit-content;
+    position: relative;
+    border-radius: 10px;
+}
+
+.bottom-a {
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+    background: linear-gradient(rgba(36, 36, 36, 0), black);
+    color: white;
+    width: -webkit-fill-available;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.slide-btn {
+    margin-top: 2%;
+}
+
+.bottom-a h1 {
+    color: white !important
+}
+
 .card-div {
     transition: 0.25s;
     cursor: pointer;
@@ -394,12 +424,23 @@ a:hover {
     margin-right: 2%;
     color: gray;
     position: relative !important;
-    height: 420px;
+    height: 390px;
+    border: 2px solid white;
+    box-shadow: 0px 0px 20px rgb(233, 232, 232);
+}
+
+.justify {
+    justify-content: space-between;
+}
+
+.w-48 {
+    width: 48%
 }
 
 .card-div:hover {
     box-shadow: 0px 0px 20px rgb(233, 232, 232);
     color: black;
+    border: 2px solid rgb(223, 189, 255);
     background-color: rgba(255, 209, 4, 0.062) !important;
 }
 
@@ -466,7 +507,7 @@ input[type='text'] {
 
 .bottom-up {
     position: absolute !important;
-    bottom: 5%;
+    bottom: 15%;
 }
 
 .card p {
@@ -656,6 +697,32 @@ li {
     .flex {
         display: block;
     }
+    .lil-card {
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 3%;
+    }
+    .slide-div {
+        height: 300px;
+        width: 100%;
+    }
+    .slide-div p {
+        font-size: 8pt;
+        margin-bottom: 1%;
+    }
+    .m-r {
+        margin-left: 0px !important;
+    }
+    .hero {
+        display: none;
+    }
+    .anim {
+        animation: none;
+    }
+    .w-48 {
+        width: 90%;
+    }
     .MuiContainer-root {
         padding: unset !important;
         margin: unset
@@ -674,7 +741,11 @@ li {
         display: block;
         position: fixed;
         bottom: 0;
+        left: 0;
         z-index: 2
+    }
+    #root {
+        width: 98%;
     }
     .w-30 {
         width: -webkit-fill-available !important
@@ -682,6 +753,9 @@ li {
     .hero {
         width: 100%;
         height: unset
+    }
+    .card-div {
+        margin-bottom: 2% !important;
     }
     .w-50 {
         width: -webkit-fill-available !important
